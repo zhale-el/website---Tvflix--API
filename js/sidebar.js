@@ -3,6 +3,10 @@
 import { API_KEY, fetchDataFromServer } from "./api.js";
 
 export function sidebar() {
+  /***
+   * fetch all genres eg:[{"id":"123","name":"Action"}]
+   *then change genre formate eg:{123:}
+   */
   const genreList = {};
   const url = `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}`;
 

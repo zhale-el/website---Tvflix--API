@@ -46,25 +46,16 @@ const heroBanner = function ({ results: movielist }) {
   const banner = document.createElement("section");
   banner.classList.add("banner");
   banner.ariaLabel = "Popular Movies";
-  banner.innerHTML = html`
-    <!--  banner-slider start-->
-    <div class="banner-slider">
-      <!--  slider-control start -->
+  banner.innerHTML = `
+   
+    <div class="banner-slider">  </div>
+    
       <div class="slider-control">
         <div class="control-inner">
-          <button class="poster-box slider-item">
-            <img
-              src="./images/slider-control.jpg"
-              alt="Slide to Puss in Boots: The Last Wish"
-              loading="lazy"
-              draggable="false"
-              class="img-cover"
-            />
-          </button>
         </div>
       </div>
-      <!--  slider-control end -->
-    </div>
+     
+  
   `;
 
   let controlItemIndex = 0;
@@ -117,5 +108,26 @@ const heroBanner = function ({ results: movielist }) {
         </a>
       </div>
     `;
+    banner.querySelector(".banner-slider").appendChild(sliderItem);
+
+    const controlItem = document.createElement("button");
+    controlItem.classList.add("poster-box", "slider-item");
+    controlItem.setAttribute("slider-control", `${controlItemIndex}`);
+
+    controlItemIndex++;
+
+    controlItem.innerHTML = `
+      <img
+        src="${imageBaseUrl}w154${poster_path}"
+        alt="slide to${title}"
+        class="img-cover"
+        loading="lazy"
+        draggable="false"
+        class="img-cover"
+      />
+    `;
+    banner.querySelector(".control-inner").appendChild(controlItem);
   }
+
+  pageContent.appendChild(banner);
 };

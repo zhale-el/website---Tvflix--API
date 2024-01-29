@@ -6,6 +6,7 @@
 import { sidebar } from "./sidebar.js";
 import { API_KEY, imageBaseUrl, fetchDataFromServer } from "./api.js";
 import { createMovieCard } from "./movie-card.js";
+import { search } from "./search.js";
 
 sidebar();
 
@@ -216,3 +217,5 @@ const createMovieList = function ({ results: movielist }, title) {
 
   pageContent.appendChild(movieListElem);
 };
+
+search();

@@ -14,7 +14,7 @@ export function search() {
   let searchTimeout;
 
   searchField.addEventListener("input", function () {
-    if (!searchField.ariaValueMax.trim()) {
+    if (!searchField.value.trim()) {
       searchResultModal.classList.remove("active");
       searchWrapper.classList.remove("searching");
       clearTimeout(searchTimeout);
@@ -31,7 +31,22 @@ export function search() {
           searchResultModal.classList.add("active");
           searchResultModal.innerHTML = ""; //remove old results
 
-          searchResultModal.innerHTML = html``;
+          searchResultModal.innerHTML = `
+            <p class="label">Results for</p>
+
+            <h1 class="heading">${searchField.value}</h1>
+            <div className="movie-list">
+              <div class="grid-list"></div>
+            </div>
+          `;
+
+          for (const movie of movieList) {
+            const movieCard = createMovieCard(movie);
+
+            searchResultModal
+              .querySelector(".grid-list")
+              .appendChild(movieCard);
+          }
         }
       );
     }, 500);

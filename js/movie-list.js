@@ -3,6 +3,7 @@
 import { API_KEY, fetchDataFromServer } from "./api.js";
 import { sidebar } from "./sidebar.js";
 import { createMovieCard } from "./movie-card.js";
+import { search } from "./search.js";
 
 //collect genre name & url parameter from local storage
 
@@ -78,3 +79,5 @@ fetchDataFromServer(
       });
   }
 );
+
+search();

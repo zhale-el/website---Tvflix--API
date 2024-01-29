@@ -30,13 +30,39 @@ export function sidebar() {
     <!---------Language------->
     <div class="sidebar-list">
       <p class="title">Language</p>
-      <a href="./movie-list.html" class="sidebar-link" menu-close
+      <a
+        href="./movie-list.html"
+        class="sidebar-link"
+        menu-close
+        onclick="getMovieList('with_original_language=en','English')"
         >English</a
       >
-      <a href="./movie-list.html" class="sidebar-link" menu-close>Hindi</a>
-      <a href="./movie-list.html" class="sidebar-link" menu-close
-        >Bengali</a
+
+      <a
+      href="./movie-list.html"
+      class="sidebar-link"
+      menu-close
+      onclick="getMovieList('with_original_language=fa','Persian')"
+      >Persian</a
+    >
+
+
+
+      <a
+        href="./movie-list.html"
+        class="sidebar-link"
+        menu-close
+        onclick="getMovieList('with_original_language=hi','Hindi')"
+        >Hindi</a
+      >  
+      <a
+        href="./movie-list.html"
+        class="sidebar-link"
+        menu-close
+        onclick="getMovieList('with_original_language=ko','Korean')"
+        >Korean</a
       >
+    
     </div>
 
     <!---------Footer------->
@@ -52,7 +78,7 @@ export function sidebar() {
         alt="the movie database logo"
       />
     </div>
-    `;
+  `;
 
   const genreLink = function () {
     for (const [genreId, genreName] of Object.entries(genreList)) {
@@ -60,7 +86,10 @@ export function sidebar() {
       link.classList.add("sidebar-link");
       link.setAttribute("href", "./movie-list.html");
       link.setAttribute("menu-close", "");
-      // link.setAttribute("onclick",`getMovieList("with-genre=${genreId}","${genreName}")`)
+      link.setAttribute(
+        "onclick",
+        `getMovieList("with_genres=${genreId}","${genreName}")`
+      );
       link.textContent = genreName;
 
       sidebarInner.querySelectorAll(".sidebar-list")[0].appendChild(link);

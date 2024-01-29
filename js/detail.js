@@ -180,3 +180,27 @@ fetchDataFromServer(
     );
   }
 );
+
+const addSuggestedMovies = function ({ results: movielist }, title) {
+  const movieListElem = document.createElement("section");
+  movieListElem.classList.add("movie-list");
+  movieListElem.ariaLabel = "You May Also Like";
+
+  movieListElem.innerHTML = `
+    <div class="title-wrapper">
+      <h3 class="title-large">You May Also Like</h3>
+    </div>
+
+    <div class="slider-list">
+      <div class="slider-inner"></div>
+    </div>
+  `;
+
+  for (const movie of movielist) {
+    const movieCard = createMovieCard(movie); //called from movie_card.js
+
+    movieListElem.querySelector(".slider-inner").appendChild(movieCard);
+  }
+
+  pageContent.appendChild(movieListElem);
+};
